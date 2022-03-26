@@ -15,7 +15,7 @@ function Results(props){
     let total = teleop + auto + climb
     let shotAccuracy = state.teleop.madeShots / (state.teleop.madeShots + state.teleop.missedShots)
     let defenseTime = state.teleop.defenseTime
-    let cycles = state.teleop.cycleTimes.length + 1
+    let cycles = (state.teleop.missedShots + state.teleop.madeShots) / 2
 
     return (
         <div className="App-header">
