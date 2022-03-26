@@ -3,7 +3,7 @@ import { useState } from "react";
 import state from "../static/state";
 
 function ClimbDisplay(props){
-    const [climbPoints, setClimbPoints] = useState(state.climb.successful)
+    const [climbPoints, setClimbPoints] = useState(false)
     // const [climbing, setClimbing] = useState(false)
 
     if(props.save){

@@ -8,7 +8,7 @@ import '../static/page.css'
 import state from "../static/state";
 
 function Editor(props){
-    const [teamNumber, setTeamNumber] = useState(state.general.teamNumber)
+    const [teamNumber, setTeamNumber] = useState(0)
     const [save, setSave] = useState(false)
 
     if(save){

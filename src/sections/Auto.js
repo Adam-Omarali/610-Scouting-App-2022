@@ -3,8 +3,8 @@ import PlusMinusDisplay from "../components/PlusMinus";
 import state from "../static/state";
 
 function AutoDisplay(props){
-    const [autoLower, setAutoLower] = useState(state.auto.lowerScored)
-    const [autoUpper, setAutoUpper] = useState(state.auto.upperScored)
+    const [autoLower, setAutoLower] = useState(0)
+    const [autoUpper, setAutoUpper] = useState(0)
 
     if(props.save){
         state.auto.lowerScored = autoLower

@@ -3,10 +3,10 @@ import { useState } from "react";
 import state from "../static/state";
 
 function GeneralDisplay(props){
-    const [playedAgainstDefense, setPlayedAgainstDefense] = useState(state.general.playedAgainstDefense)
-    const [shootAnywhere, setShootAnywhere] = useState(state.general.shootEverywhere)
-    const [offAutoLine, setOffAutoLine] = useState(state.auto.offAutoLine)
-    const [successfulClimb, setSuccessfuClimb] = useState(state.climb.successful)
+    const [playedAgainstDefense, setPlayedAgainstDefense] = useState(false)
+    const [shootAnywhere, setShootAnywhere] = useState(false)
+    const [offAutoLine, setOffAutoLine] = useState(false)
+    const [successfulClimb, setSuccessfuClimb] = useState(false)
 
     if(props.save){
         state.climb.successful = successfulClimb

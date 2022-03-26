@@ -4,13 +4,13 @@ import PlusMinusDisplay from "../components/PlusMinus";
 import state from "../static/state";
 
 function TeleopDisplay(props){
-    const [missedShots, setMissedShots] = useState(state.teleop.missedShots)
-    const [madeShots, setMadeShots] = useState(state.teleop.madeShots)
-    const [lowShots, setLowShots] = useState(state.teleop.lowerGoalBalls)
-    const [cycleTimes, setCycleTimes] = useState(state.teleop.cycleTimes)
+    const [missedShots, setMissedShots] = useState(0)
+    const [madeShots, setMadeShots] = useState(0)
+    const [lowShots, setLowShots] = useState(0)
+    const [cycleTimes, setCycleTimes] = useState(0)
     const [currCycle, setCurrCycle] = useState(0)
     const [defense, setDefense] = useState(false)
-    const [totalDefenseTime, setTotalDefenseTime] = useState(state.teleop.defenseTime)
+    const [totalDefenseTime, setTotalDefenseTime] = useState(0)
     const [defenseTime, setDefenseTime] = useState(0)
 
     if(props.save){
