@@ -1,0 +1,34 @@
+header{
+    font-size: calc(10px + 2vmin);
+}
+
+.title{
+    width: fit-content;
+    border-bottom: 1px solid rgb(255, 255, 255);
+    padding-bottom: 5px;
+    padding-top: 10px;
+}
+
+.inline{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-direction: row;
+}
+
+.side-by-side{
+    display: flex;
+    gap: 20px;
+    flex-direction: row;
+}
+
+.background{
+    background-color: #101011;
+    min-height: 100vh;
+    color: white;
+    padding: 30px
+}
+
+.padding-top{
+    padding-top: 15px;
+}
