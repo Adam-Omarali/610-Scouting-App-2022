@@ -5,9 +5,9 @@ function Results(props){
 
     let team = state.general.teamNumber
     let avgCycleTime = 0;
-    state.teleop.cycleTimes.forEach(element => {
-        avgCycleTime += element
-    });
+    for (let index = 0; index < state.teleop.cycleTimes.length; index++) {
+        avgCycleTime += state.teleop.cycleTimes[index];
+    }
     avgCycleTime /= (state.teleop.cycleTimes.length + 1)
     let teleop = (state.teleop.madeShots - state.teleop.lowerGoalBalls) * 2 + state.teleop.lowerGoalBalls
     let auto = state.auto.upperScored * 4 + state.auto.lowerScored * 2 + (state.auto.offAutoLine ? 4 : 0)
