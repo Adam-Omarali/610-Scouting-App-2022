@@ -1,5 +1,4 @@
 import { Checkbox, FormControlLabel, FormGroup } from "@mui/material";
-import { getThemeProps } from "@mui/system";
 import { useState } from "react";
 import state from "../static/state";
 

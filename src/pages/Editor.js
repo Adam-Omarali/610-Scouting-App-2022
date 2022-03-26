@@ -1,10 +1,8 @@
-import { Button, Checkbox, FormControl, FormControlLabel, FormGroup, InputLabel, MenuItem, Select, Slider, TextField } from "@mui/material";
-import { green } from "@mui/material/colors";
+import { Button, TextField } from "@mui/material";
 import { useState } from "react";
 import AutoDisplay from "../sections/Auto";
 import ClimbDisplay from "../sections/Climb";
 import GeneralDisplay from "../sections/General";
-import PlusMinusDisplay from "../components/PlusMinus";
 import TeleopDisplay from "../sections/Teleop";
 import '../static/page.css'
 import state from "../static/state";

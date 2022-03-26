@@ -1,4 +1,3 @@
-import { Slider, TextField } from "@mui/material";
 import { useState } from "react";
 import PlusMinusDisplay from "../components/PlusMinus";
 import state from "../static/state";

@@ -1,6 +1,5 @@
-import { Button, TextField } from "@mui/material";
-import { getThemeProps } from "@mui/system";
-import { useEffect, useState } from "react";
+import { Button } from "@mui/material";
+import { useState } from "react";
 import PlusMinusDisplay from "../components/PlusMinus";
 import state from "../static/state";
 
@@ -23,7 +22,7 @@ function TeleopDisplay(props){
     }
 
     const checkCycleTime = () => {
-        if((missedShots + madeShots) % 2 == 0){
+        if((missedShots + madeShots) % 2 === 0){
             let currD = new Date()
             let diff = currD.getMinutes() * 60 + currD.getSeconds() - currCycle
             if(diff < 120){

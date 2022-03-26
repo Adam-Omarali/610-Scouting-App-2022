@@ -1,10 +1,10 @@
-import { Button, FormControl, InputLabel, MenuItem, Select } from "@mui/material";
+import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 import { useState } from "react";
 import state from "../static/state";
 
 function ClimbDisplay(props){
     const [climbPoints, setClimbPoints] = useState(state.climb.successful)
-    const [climbing, setClimbing] = useState(false)
+    // const [climbing, setClimbing] = useState(false)
 
     if(props.save){
         state.climb.attemptedPoints = climbPoints
