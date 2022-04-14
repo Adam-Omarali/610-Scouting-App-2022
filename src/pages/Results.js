@@ -45,8 +45,8 @@ function Results(props){
     let lowerMisses = state.teleop.missedLowShots
 
     async function addRow(doc){
-        const sheet = doc.sheetsByTitle[`${state.general.teamNumber}`]
-        await sheet.addRow({
+        const sheet = await doc.sheetsByTitle[`${state.general.teamNumber}`]
+        const newRow = await sheet.addRow({
             Teleop_Points : teleopPoints, Auto_Points : autoPoints, Climb_Points : climbPoints, Total_Points : totalPoints, 
             Total_Balls_Shot : totalShot, Teleop_Accuracy : shotAccuracyTeleop, Auto_Accuracy : shotAccuracyAuto, 
             Avg_Cycle_Time : avgCycleTime, Total_Cycles : cycles, Time_Played_Defense : defenseTime, Successful_Climb : successfulClimb, 
