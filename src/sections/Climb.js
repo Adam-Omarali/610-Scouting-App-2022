@@ -19,7 +19,6 @@ function ClimbDisplay(props){
         if(climbing){
             let d = Date.now() / 1000
             let diff = d - climbTime;
-            console.log(diff)
             setTotalClimbTime(totalClimbTime + diff);
         }
         else{
