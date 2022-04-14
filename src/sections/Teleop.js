@@ -24,32 +24,60 @@ function TeleopDisplay(props){
         state.teleop.missedLowShots = missedLowShots
     }
 
+    // const checkCycleTime = () => {
+    //     if((missedHighShots + highShots + missedLowShots + lowShots) % 2 === 0){
+    //         let currD = new Date()
+    //         let diff = currD.getMinutes() * 60 + currD.getSeconds() - currCycle
+    //         if(diff < 120){
+    //             setCycleTimes([...cycleTimes, diff])
+    //         }
+    //         setCurrCycle(new Date().getSeconds() + new Date().getMinutes() * 60)
+    //     }
+    // }
+    console.log(cycleTimes)
     const checkCycleTime = () => {
         if((missedHighShots + highShots + missedLowShots + lowShots) % 2 === 0){
-            let currD = new Date()
-            let diff = currD.getMinutes() * 60 + currD.getSeconds() - currCycle
-            if(diff < 120){
-                setCycleTimes([...cycleTimes, diff])
+            let currD = Date.now()
+            let diff = currD - currCycle
+            if(diff/1000 < 120){
+                setCycleTimes([...cycleTimes, diff/1000])
             }
-            setCurrCycle(new Date().getSeconds() + new Date().getMinutes() * 60)
+            setCurrCycle(Date.now())
         }
     }
 
+    // const checkDefenseTime = () => {
+    //     setDefense(!defense)
+    //     if(defense){
+    //         let d = new Date()
+    //         setDefenseTime(d.getSeconds() + d.getMinutes() * 60)
+    //         let diff = d.getSeconds() + d.getMinutes() * 60 - currCycle;
+    //         setCurrCycle(diff)
+    //     }
+    //     else{
+    //         let d = new Date()
+    //         let diff = d.getSeconds() + d.getMinutes() * 60 - defenseTime;
+    //         if(diff < 2000){
+    //             setTotalDefenseTime(totalDefenseTime + diff);
+    //         }
+    //         setCurrCycle(d.getSeconds() + d.getMinutes() * 60 - currCycle)
+    //     }
+    // }
     const checkDefenseTime = () => {
         setDefense(!defense)
         if(defense){
-            let d = new Date()
-            setDefenseTime(d.getSeconds() + d.getMinutes() * 60)
-            let diff = d.getSeconds() + d.getMinutes() * 60 - currCycle;
+            let d = Date.now()
+            setDefenseTime(d)
+            let diff = d - currCycle;
             setCurrCycle(diff)
         }
         else{
-            let d = new Date()
-            let diff = d.getSeconds() + d.getMinutes() * 60 - defenseTime;
-            if(diff < 2000){
-                setTotalDefenseTime(totalDefenseTime + diff);
+            let d = Date.now()
+            let diff = d - defenseTime;
+            if(diff/1000 < 2000){
+                setTotalDefenseTime(totalDefenseTime + diff/1000);
             }
-            setCurrCycle(d.getSeconds() + d.getMinutes() * 60 - currCycle)
+            setCurrCycle(d - currCycle)
         }
     }
 
