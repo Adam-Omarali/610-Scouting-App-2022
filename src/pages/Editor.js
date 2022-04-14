@@ -10,9 +10,11 @@ import state from "../static/state";
 function Editor(props){
     const [teamNumber, setTeamNumber] = useState(0)
     const [save, setSave] = useState(false)
+    const [notes, setNotes] = useState("")
 
     if(save){
         state.general.teamNumber = teamNumber
+        state.general.notes = notes
     }
 
     return(
@@ -35,9 +37,12 @@ function Editor(props){
                     <TextField label="Team Number" value={teamNumber} onChange={(e) => {setTeamNumber(e.target.value)}}/>
                 </div>
                 <div className="padding-top">
+                    <TextField placeholder="Notes" value={notes} onChange={(e) => {setNotes(e.target.value)}}>Notes</TextField>
+                 </div>
+                <div className="padding-top">
                     <Button style={{backgroundColor: 'green', color:'white'}} variant="contained" onClick={() => setSave(!save)}>{save ? "Done" : "Save"}</Button>
                 </div>
-                {save && <div className="padding-top">
+                {save && teamNumber !== 0 && <div className="padding-top">
                     <Button variant="contained" onClick={() => props.setPage("results")}>Finish Match</Button>
                 </div>}
                 <div className="padding-top">

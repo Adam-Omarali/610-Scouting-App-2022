@@ -3,7 +3,7 @@ import { Button } from "@mui/material"
 function PlusMinusDisplay(props){
     return(
         <div style={{"paddingBottom" : "20px"}}>
-            <p style={{fontWeight: "bold", color: "#5ec2ff"}}>{props.name}</p>
+            <p style={{fontWeight: "bold", color: props.name.indexOf('Upper') !== -1 ? "yellow" :"#5ec2ff"}}>{props.name}</p>
             <div className="inline">
                 <p>Current: {props.value}</p>
                 <Button style={{color : "white", fontSize: "20px", backgroundColor: "green"}} onClick={() => {props.change(props.value + 1); props.test()}}>+</Button>

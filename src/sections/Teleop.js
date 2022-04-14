@@ -4,10 +4,11 @@ import PlusMinusDisplay from "../components/PlusMinus";
 import state from "../static/state";
 
 function TeleopDisplay(props){
-    const [missedShots, setMissedShots] = useState(0)
-    const [madeShots, setMadeShots] = useState(0)
+    const [missedHighShots, setMissedHighShots] = useState(0)
+    const [missedLowShots, setMissedLowShots] = useState(0)
+    const [highShots, setHighShots] = useState(0)
     const [lowShots, setLowShots] = useState(0)
-    const [cycleTimes, setCycleTimes] = useState(0)
+    const [cycleTimes, setCycleTimes] = useState([])
     const [currCycle, setCurrCycle] = useState(0)
     const [defense, setDefense] = useState(false)
     const [totalDefenseTime, setTotalDefenseTime] = useState(0)
@@ -16,20 +17,20 @@ function TeleopDisplay(props){
     if(props.save){
         state.teleop.cycleTimes = cycleTimes
         state.teleop.defenseTime = totalDefenseTime
-        state.teleop.lowerGoalBalls = lowShots
-        state.teleop.madeShots = madeShots
-        state.teleop.missedShots = missedShots
+        state.teleop.madeLowShots = lowShots
+        state.teleop.madeHighShots = highShots
+        state.teleop.missedHighShots = missedHighShots
+        state.teleop.missedLowShots = missedLowShots
     }
 
     const checkCycleTime = () => {
-        if((missedShots + madeShots) % 2 === 0){
+        if((missedHighShots + highShots + missedLowShots + lowShots) % 2 === 0){
             let currD = new Date()
             let diff = currD.getMinutes() * 60 + currD.getSeconds() - currCycle
             if(diff < 120){
                 setCycleTimes([...cycleTimes, diff])
             }
             setCurrCycle(new Date().getSeconds() + new Date().getMinutes() * 60)
-            console.log(diff)
         }
     }
 
@@ -56,9 +57,10 @@ function TeleopDisplay(props){
         <div>
             <header className="title">Teleop</header>
             {/* <PlusMinusDisplay name="Balls in Intake" value={ballsIntake} change={setIntakeBalls}/> */}
-            <PlusMinusDisplay name="Made Shots" value={madeShots} change={setMadeShots} test={checkCycleTime}/>
-            <PlusMinusDisplay name="Missed Shots" value={missedShots} change={setMissedShots} test={checkCycleTime}/>
-            <PlusMinusDisplay name="Shots in Low Goal" value={lowShots} change={setLowShots} test={checkCycleTime}/>
+            <PlusMinusDisplay name="Made Upper Shots" value={highShots} change={setHighShots} test={checkCycleTime}/>
+            <PlusMinusDisplay name="Missed Upper Shots" value={missedHighShots} change={setMissedHighShots} test={checkCycleTime}/>
+            <PlusMinusDisplay name="Made Lower Shots" value={lowShots} change={setLowShots} test={checkCycleTime}/>
+            <PlusMinusDisplay name="Missed Lower Shots" value={missedLowShots} change={setMissedLowShots} test={checkCycleTime}/>
 
             <Button variant="contained" onClick={() => checkDefenseTime()}>{defense ? "Stop Defense Timer" : "Start Defense Timer"}</Button>
         </div>
