@@ -39,17 +39,18 @@ function TeleopDisplay(props){
         setDefense(!defense)
         if(defense){
             let d = Date.now()
-            setDefenseTime(d)
-            let diff = d - currCycle;
-            setCurrCycle(diff)
-        }
-        else{
-            let d = Date.now()
             let diff = d - defenseTime;
+            console.log(diff/1000)
             if(diff/1000 < 2000){
                 setTotalDefenseTime(totalDefenseTime + diff/1000);
             }
             setCurrCycle(d - currCycle)
+        }
+        else{
+            let d = Date.now()
+            setDefenseTime(d)
+            let diff = d - currCycle;
+            setCurrCycle(diff)
         }
     }
 
