@@ -1,14 +1,32 @@
-import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
+import { Button, FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 import { useState } from "react";
 import state from "../static/state";
 
 function ClimbDisplay(props){
     const [climbPoints, setClimbPoints] = useState(false)
-    // const [climbing, setClimbing] = useState(false)
+    const [climbing, setClimbing] = useState(false) 
+    const [climbTime, setClimbTime] = useState(0)
+    const [totalClimbTime, setTotalClimbTime] = useState(0)
 
     if(props.save){
         state.climb.attemptedPoints = climbPoints
+        state.climb.climbTime = totalClimbTime
     }
+
+    const countClimbTime = () => {
+        setClimbing(!climbing)
+        if(climbing){
+            let d = new Date()
+            setClimbTime(d.getSeconds() + d.getMinutes() * 60)
+        }
+        else{
+            let d = new Date()
+            let diff = d.getSeconds() + d.getMinutes() * 60 - climbTime;
+            console.log(diff)
+            setTotalClimbTime(totalClimbTime + diff);
+        }
+    }
+
     return(
         <div>
             <header className="title">Climb</header>
@@ -26,6 +44,9 @@ function ClimbDisplay(props){
                         <MenuItem value={15}>15pt</MenuItem>
                     </Select>
                 </FormControl>
+                {/* <div className="padding-top">
+                    <Button variant="contained" onClick={() => countClimbTime()}>{climbing ? "Stop Climb Timer" : "Start Climb Timer"}</Button>
+                </div> */}
             </div>
         </div>
     )

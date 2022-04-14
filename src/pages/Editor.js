@@ -11,10 +11,12 @@ function Editor(props){
     const [teamNumber, setTeamNumber] = useState(0)
     const [save, setSave] = useState(false)
     const [notes, setNotes] = useState("")
+    const [matchNumber, setMatchNumber] = useState("")
 
     if(save){
         state.general.teamNumber = teamNumber
         state.general.notes = notes
+        state.general.match = matchNumber
     }
 
     return(
@@ -38,6 +40,9 @@ function Editor(props){
                 </div>
                 <div className="padding-top">
                     <TextField placeholder="Notes" value={notes} onChange={(e) => {setNotes(e.target.value)}}>Notes</TextField>
+                 </div>
+                <div className="padding-top">
+                    <TextField placeholder="Match Number" value={matchNumber} onChange={(e) => {setMatchNumber(e.target.value)}}>Match Number</TextField>
                  </div>
                 <div className="padding-top">
                     <Button style={{backgroundColor: 'green', color:'white'}} variant="contained" onClick={() => setSave(!save)}>{save ? "Done" : "Save"}</Button>

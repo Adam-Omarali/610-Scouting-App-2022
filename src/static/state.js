@@ -17,12 +17,14 @@ const state = {
     climb : {
         "attemptedPoints" : 0,
         "successful" : false,
+        "climbTime" : 0
     },
     general : {
         "shootEverywhere" : false,
         "teamNumber" : 0,
         "playedAgainstDefense" : false,
-        "notes" : ""
+        "notes" : "",
+        "match" : ""
     }
 }
 

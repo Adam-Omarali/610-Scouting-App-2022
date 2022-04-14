@@ -14,6 +14,7 @@ function TeleopDisplay(props){
     const [totalDefenseTime, setTotalDefenseTime] = useState(0)
     const [defenseTime, setDefenseTime] = useState(0)
 
+
     if(props.save){
         state.teleop.cycleTimes = cycleTimes
         state.teleop.defenseTime = totalDefenseTime
