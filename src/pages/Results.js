@@ -1,4 +1,4 @@
-import { Button, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TextField } from "@mui/material";
+import { Button, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
 import state from "../static/state";
 import config from '../config.json'
 import { useEffect } from "react";
@@ -6,7 +6,7 @@ const { GoogleSpreadsheet } = require('google-spreadsheet');
 
 async function createSpreadsheet(doc){
     if(doc.sheetsByTitle[`${state.general.teamNumber}`] === undefined){
-        const newSheet = await doc.addSheet({ title: state.general.teamNumber.toString(), headerValues: 
+        await doc.addSheet({ title: state.general.teamNumber.toString(), headerValues: 
             ['Teleop_Points', 'Auto_Points', 'Climb_Points', 'Total_Points', 'Total_Balls_Shot', 'Teleop_Accuracy', 
             'Auto_Accuracy', 'Avg_Cycle_Time', 'Total_Cycles', 'Time_Played_Defense', 'Successful_Climb', 'Notes',
             'Total_Teleop_Upper_Goal_Makes', 'Total_Teleop_Upper_Goal_Misses', 'Total_Teleop_Lower_Goal_Makes', 
@@ -46,7 +46,7 @@ function Results(props){
 
     async function addRow(doc){
         const sheet = doc.sheetsByTitle[`${state.general.teamNumber}`]
-        const row = await sheet.addRow({
+        await sheet.addRow({
             Teleop_Points : teleopPoints, Auto_Points : autoPoints, Climb_Points : climbPoints, Total_Points : totalPoints, 
             Total_Balls_Shot : totalShot, Teleop_Accuracy : shotAccuracyTeleop, Auto_Accuracy : shotAccuracyAuto, 
             Avg_Cycle_Time : avgCycleTime, Total_Cycles : cycles, Time_Played_Defense : defenseTime, Successful_Climb : successfulClimb, 
@@ -64,12 +64,14 @@ function Results(props){
                 private_key: config.private_key,
             });
             await doc.loadInfo();
-
+    
             createSpreadsheet(doc)
             addRow(doc)
         }
+    
         fectchData();
-    },[]);
+    }, [])
+
 
     return (
         <div className="App-header">
