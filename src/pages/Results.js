@@ -6,6 +6,8 @@ const { GoogleSpreadsheet } = require('google-spreadsheet');
 
 async function createSpreadsheet(doc){
     if(doc.sheetsByTitle[`${state.general.teamNumber}`] === undefined){
+        const sheet2 = await doc.sheetsByTitle['All Teams']
+        await sheet2.addRow({Team_Number : state.general.teamNumber})
         return await doc.addSheet({ title: state.general.teamNumber.toString(), headerValues: 
             ['Teleop_Points', 'Auto_Points', 'Climb_Points', 'Total_Points', 'Total_Balls_Shot', 'Teleop_Accuracy', 
             'Auto_Accuracy', 'Avg_Cycle_Time', 'Total_Cycles', 'Time_Played_Defense', 'Successful_Climb', 'Notes',
@@ -46,7 +48,6 @@ function Results(props){
     let lowerMisses = state.teleop.missedLowShots
 
     async function addRow(doc, sheet){
-        console.log(sheet)
         const newRow = await sheet.addRow({
             Teleop_Points : teleopPoints, Auto_Points : autoPoints, Climb_Points : climbPoints, Total_Points : totalPoints, 
             Total_Balls_Shot : totalShot, Teleop_Accuracy : shotAccuracyTeleop, Auto_Accuracy : shotAccuracyAuto, 
