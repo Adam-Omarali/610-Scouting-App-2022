@@ -2,6 +2,7 @@ const state = {
     auto : {
         "upperScored" : 0,
         "lowerScored" : 0,
+        "ballsMissed" : 0,
         "offAutoLine" : false
     },
     teleop : {

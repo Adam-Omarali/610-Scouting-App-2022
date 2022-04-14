@@ -5,10 +5,12 @@ import state from "../static/state";
 function AutoDisplay(props){
     const [autoLower, setAutoLower] = useState(0)
     const [autoUpper, setAutoUpper] = useState(0)
+    const [autoMissed, setAutoMissed] = useState(0)
 
     if(props.save){
         state.auto.lowerScored = autoLower
         state.auto.upperScored = autoUpper
+        state.auto.ballsMissed = autoMissed
     }
     return(
         <div>
@@ -16,6 +18,7 @@ function AutoDisplay(props){
             <div>
                 <PlusMinusDisplay name={"Auto Upper Balls Scored"} value={autoUpper} change={setAutoUpper} test={() => {}}/>
                 <PlusMinusDisplay name={"Auto Lower Balls Scored"} value={autoLower} change={setAutoLower} test={() => {}}/>
+                <PlusMinusDisplay name={"Auto Lower Balls Scored"} value={autoMissed} change={setAutoMissed} test={() => {}}/>
             </div>
         </div>
     )
