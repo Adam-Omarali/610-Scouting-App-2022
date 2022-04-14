@@ -6,12 +6,13 @@ const { GoogleSpreadsheet } = require('google-spreadsheet');
 
 async function createSpreadsheet(doc){
     if(doc.sheetsByTitle[`${state.general.teamNumber}`] === undefined){
-        await doc.addSheet({ title: state.general.teamNumber.toString(), headerValues: 
+        return await doc.addSheet({ title: state.general.teamNumber.toString(), headerValues: 
             ['Teleop_Points', 'Auto_Points', 'Climb_Points', 'Total_Points', 'Total_Balls_Shot', 'Teleop_Accuracy', 
             'Auto_Accuracy', 'Avg_Cycle_Time', 'Total_Cycles', 'Time_Played_Defense', 'Successful_Climb', 'Notes',
             'Total_Teleop_Upper_Goal_Makes', 'Total_Teleop_Upper_Goal_Misses', 'Total_Teleop_Lower_Goal_Makes', 
             'Total_Teleop_Lower_Goal_Misses'] });
     }
+    return doc.sheetsByTitle[`${state.general.teamNumber}`]
 }
 
 function Results(props){
@@ -44,8 +45,8 @@ function Results(props){
     let upperMisses = state.teleop.missedHighShots
     let lowerMisses = state.teleop.missedLowShots
 
-    async function addRow(doc){
-        const sheet = await doc.sheetsByTitle[`${state.general.teamNumber}`]
+    async function addRow(doc, sheet){
+        console.log(sheet)
         const newRow = await sheet.addRow({
             Teleop_Points : teleopPoints, Auto_Points : autoPoints, Climb_Points : climbPoints, Total_Points : totalPoints, 
             Total_Balls_Shot : totalShot, Teleop_Accuracy : shotAccuracyTeleop, Auto_Accuracy : shotAccuracyAuto, 
@@ -65,8 +66,8 @@ function Results(props){
             });
             await doc.loadInfo();
     
-            createSpreadsheet(doc)
-            addRow(doc)
+            const sheet = await createSpreadsheet(doc)
+            addRow(doc, sheet)
         }
     
         fectchData();
