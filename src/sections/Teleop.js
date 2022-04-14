@@ -24,17 +24,6 @@ function TeleopDisplay(props){
         state.teleop.missedLowShots = missedLowShots
     }
 
-    // const checkCycleTime = () => {
-    //     if((missedHighShots + highShots + missedLowShots + lowShots) % 2 === 0){
-    //         let currD = new Date()
-    //         let diff = currD.getMinutes() * 60 + currD.getSeconds() - currCycle
-    //         if(diff < 120){
-    //             setCycleTimes([...cycleTimes, diff])
-    //         }
-    //         setCurrCycle(new Date().getSeconds() + new Date().getMinutes() * 60)
-    //     }
-    // }
-    console.log(cycleTimes)
     const checkCycleTime = () => {
         if((missedHighShots + highShots + missedLowShots + lowShots) % 2 === 0){
             let currD = Date.now()
@@ -46,23 +35,6 @@ function TeleopDisplay(props){
         }
     }
 
-    // const checkDefenseTime = () => {
-    //     setDefense(!defense)
-    //     if(defense){
-    //         let d = new Date()
-    //         setDefenseTime(d.getSeconds() + d.getMinutes() * 60)
-    //         let diff = d.getSeconds() + d.getMinutes() * 60 - currCycle;
-    //         setCurrCycle(diff)
-    //     }
-    //     else{
-    //         let d = new Date()
-    //         let diff = d.getSeconds() + d.getMinutes() * 60 - defenseTime;
-    //         if(diff < 2000){
-    //             setTotalDefenseTime(totalDefenseTime + diff);
-    //         }
-    //         setCurrCycle(d.getSeconds() + d.getMinutes() * 60 - currCycle)
-    //     }
-    // }
     const checkDefenseTime = () => {
         setDefense(!defense)
         if(defense){

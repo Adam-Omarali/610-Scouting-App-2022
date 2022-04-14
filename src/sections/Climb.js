@@ -15,15 +15,16 @@ function ClimbDisplay(props){
 
     const countClimbTime = () => {
         setClimbing(!climbing)
+        console.log(climbing)
         if(climbing){
-            let d = new Date()
-            setClimbTime(d.getSeconds() + d.getMinutes() * 60)
-        }
-        else{
-            let d = new Date()
-            let diff = d.getSeconds() + d.getMinutes() * 60 - climbTime;
+            let d = Date.now() / 1000
+            let diff = d - climbTime;
             console.log(diff)
             setTotalClimbTime(totalClimbTime + diff);
+        }
+        else{
+            let d = Date.now() / 1000
+            setClimbTime(d)
         }
     }
 
@@ -44,9 +45,9 @@ function ClimbDisplay(props){
                         <MenuItem value={15}>15pt</MenuItem>
                     </Select>
                 </FormControl>
-                {/* <div className="padding-top">
+                <div className="padding-top">
                     <Button variant="contained" onClick={() => countClimbTime()}>{climbing ? "Stop Climb Timer" : "Start Climb Timer"}</Button>
-                </div> */}
+                </div>
             </div>
         </div>
     )

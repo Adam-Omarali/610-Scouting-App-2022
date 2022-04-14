@@ -10,7 +10,7 @@ async function createSpreadsheet(doc){
         await sheet2.addRow({Team_Number : state.general.teamNumber})
         return await doc.addSheet({ title: state.general.teamNumber.toString(), headerValues: 
             ['Teleop_Points', 'Auto_Points', 'Climb_Points', 'Total_Points', 'Total_Balls_Shot', 'Teleop_Accuracy', 
-            'Auto_Accuracy', 'Avg_Cycle_Time', 'Total_Cycles', 'Time_Played_Defense', 'Successful_Climb', 'Notes',
+            'Auto_Accuracy', 'Avg_Cycle_Time', 'Total_Cycles', 'Time_Played_Defense', 'Climb_Time', 'Successful_Climb', 'Notes',
             'Total_Teleop_Upper_Goal_Makes', 'Total_Teleop_Upper_Goal_Misses', 'Total_Teleop_Lower_Goal_Makes', 
             'Total_Teleop_Lower_Goal_Misses', 'Match_Number'] });
     }
@@ -53,7 +53,7 @@ function Results(props){
         const newRow = await sheet.addRow({
             Teleop_Points : teleopPoints, Auto_Points : autoPoints, Climb_Points : climbPoints, Total_Points : totalPoints, 
             Total_Balls_Shot : totalShot, Teleop_Accuracy : shotAccuracyTeleop, Auto_Accuracy : shotAccuracyAuto, 
-            Avg_Cycle_Time : avgCycleTime, Total_Cycles : cycles, Time_Played_Defense : defenseTime, 
+            Avg_Cycle_Time : avgCycleTime, Total_Cycles : cycles, Time_Played_Defense : defenseTime, Climb_Time : climbTime,
             Successful_Climb : successfulClimb, 
             Notes : notes, Total_Teleop_Upper_Goal_Makes : upperMakes, Total_Teleop_Upper_Goal_Misses : upperMisses, 
             Total_Teleop_Lower_Goal_Makes : lowerMakes, Total_Teleop_Lower_Goal_Misses : lowerMisses, Match_Number : matchNumber
