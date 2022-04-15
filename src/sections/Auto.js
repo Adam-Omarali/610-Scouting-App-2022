@@ -1,3 +1,4 @@
+import { Checkbox, FormControlLabel } from "@mui/material";
 import { useState } from "react";
 import PlusMinusDisplay from "../components/PlusMinus";
 import state from "../static/state";
@@ -7,12 +8,14 @@ function AutoDisplay(props){
     const [autoUpper, setAutoUpper] = useState(0)
     const [autoUpperMissed, setAutoUpperMissed] = useState(0)
     const [autoLowerMissed, setAutoLowerMissed] = useState(0)
+    const [offAutoLine, setOffAutoLine] = useState(false)
 
     if(props.save){
         state.auto.lowerScored = autoLower
         state.auto.upperScored = autoUpper
         state.auto.upperMissed = autoUpperMissed
         state.auto.lowerMissed = autoLowerMissed
+        state.auto.offAutoLine = offAutoLine
     }
     return(
         <div>
@@ -23,6 +26,7 @@ function AutoDisplay(props){
                 <PlusMinusDisplay name={"Auto Lower Balls Scored"} value={autoLower} change={setAutoLower} test={() => {}}/>
                 <PlusMinusDisplay name={"Auto Lower Balls Missed"} value={autoLowerMissed} change={setAutoLowerMissed} test={() => {}}/>
             </div>
+            <FormControlLabel control={<Checkbox value={offAutoLine} onClick={() => setOffAutoLine(!offAutoLine)}/>} label="Moved off auto line" />
         </div>
     )
 }

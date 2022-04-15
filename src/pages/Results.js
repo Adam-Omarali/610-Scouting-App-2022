@@ -31,7 +31,7 @@ function Results(props){
     });
     avgCycleTime /= (state.teleop.cycleTimes.length + 1)
     let teleopPoints = (state.teleop.madeHighShots) * 2 + state.teleop.madeLowShots
-    let autoPoints = state.auto.upperScored * 4 + state.auto.lowerScored * 2 + (state.auto.offAutoLine ? 4 : 0)
+    let autoPoints = state.auto.upperScored * 4 + state.auto.lowerScored * 2 + (state.auto.offAutoLine ? 2 : 0)
     let climbPoints = state.climb.successful ? state.climb.attemptedPoints : 0
     let totalPoints = teleopPoints + autoPoints + climbPoints
     let shotAccuracyTeleop = madeShotsTeleop / (madeShotsTeleop + missedTeleop)

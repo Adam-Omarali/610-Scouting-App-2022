@@ -1,4 +1,4 @@
-import { Button, FormControl, InputLabel, MenuItem, Select } from "@mui/material";
+import { Button, Checkbox, FormControl, FormControlLabel, FormGroup, InputLabel, MenuItem, Select } from "@mui/material";
 import { useState } from "react";
 import state from "../static/state";
 
@@ -7,10 +7,12 @@ function ClimbDisplay(props){
     const [climbing, setClimbing] = useState(false) 
     const [climbTime, setClimbTime] = useState(0)
     const [totalClimbTime, setTotalClimbTime] = useState(0)
+    const [successfulClimb, setSuccessfuClimb] = useState(false)
 
     if(props.save){
         state.climb.attemptedPoints = climbPoints
         state.climb.climbTime = totalClimbTime
+        state.climb.successful = successfulClimb
     }
 
     const countClimbTime = () => {
@@ -46,6 +48,11 @@ function ClimbDisplay(props){
                 </FormControl>
                 <div className="padding-top">
                     <Button variant="contained" onClick={() => countClimbTime()}>{climbing ? "Stop Climb Timer" : "Start Climb Timer"}</Button>
+                </div>
+                <div className="padding-top">
+                    <FormGroup>
+                        <FormControlLabel control={<Checkbox value={successfulClimb} onClick={() => setSuccessfuClimb(!successfulClimb)}/>} label="Successful Climb" />
+                    </FormGroup>
                 </div>
             </div>
         </div>
