@@ -18,7 +18,7 @@ function Editor(props){
     return(
         <div className="background">
             <div className="side-by-side">
-                <div style={{flexBasis: "50%"}}>
+                <div style={{flexBasis: "40%"}}>
                     <AutoDisplay save={save}/>
                     <ClimbDisplay save={save}/>
                     {/* <GeneralDisplay save={save}/> */}
