@@ -14,8 +14,13 @@ function PageSwitcher(){
             return <Editor setPage={setCurrPage}/>
         case "results":
             return <Results setPage={setCurrPage}/>
-        // case "data":
-        //     return <DataRoom setPage={setCurrPage}/>
+        case "data":
+            return <DataRoom setPage={setCurrPage} all={true}/>
+        case "comparison":
+            return <div className='App-header'>
+            <DataRoom all={false}/>
+            <DataRoom all={false}/>
+            </div>
         default:
             return <>page does not exist</>
     }
