@@ -3,7 +3,6 @@ export const headers = ['Teleop_Points', 'Auto_Points', 'Climb_Points', 'Total_P
 'Total_Teleop_Upper_Goal_Makes', 'Total_Teleop_Upper_Goal_Misses', 'Total_Teleop_Lower_Goal_Makes', 
 'Total_Teleop_Lower_Goal_Misses', 'Points per Second per Climb']
 
-export const simpleHeaders = ['Teleop_Points', 'Auto_Points', 'Climb_Points', 'Total_Points', 'Teleop_Accuracy', 
-'Auto_Accuracy', 'Avg_Cycle_Time', 'Total_Cycles', 'Points per Second per Climb']
+export const simpleHeaders = ['Teleop_Points', 'Auto_Points', 'Climb_Points', 'Total_Points', 'Avg_Cycle_Time', 'Total_Cycles']
 
 export const ratingHeaders = ['TEL-PTS', 'AUTO-PTS', 'CLIMB-PTS', 'TOTAL-CYCLES', 'CLB-PTS-PER-SEC', 'POWER RATING']
