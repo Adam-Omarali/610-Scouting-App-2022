@@ -18,8 +18,8 @@ function PageSwitcher(){
             return <DataRoom setPage={setCurrPage} all={true}/>
         case "comparison":
             return <div className='App-header'>
-            <DataRoom all={false}/>
-            <DataRoom all={false}/>
+            <DataRoom all={false} setPage={null}/>
+            <DataRoom all={false} setPage={setCurrPage}/>
             </div>
         default:
             return <>page does not exist</>

@@ -1,4 +1,4 @@
-import { getAccordionDetailsUtilityClass, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TextField } from "@mui/material";
+import { Button, getAccordionDetailsUtilityClass, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TextField } from "@mui/material";
 import {
     Chart as ChartJS,
     RadialLinearScale,
@@ -193,7 +193,7 @@ function DataRoom(props){
     
 
     return (
-        <div className={props.all ? "App-header" : ""}>
+        <div className={props.all ? "App-header" : ""} style={{alignContent : props.all ? 'flex-start' : '', paddingLeft : props.all ? '20px' : ''}}>
             <div className="padding-top">
                 <TextField placeholder="Team Number" label="Team Number" value={teamNumber} onChange={(e) => {setTeamNumber(e.target.value)}}>Team Number</TextField>
             </div>
@@ -258,6 +258,11 @@ function DataRoom(props){
                 </Table>
             </TableContainer>
             </>}
+            {props.setPage !== null && 
+            <div className="padding-top">
+                <Button onClick={() => props.setPage("home")}>Back Home</Button>
+            </div>
+            }
 
         </div>
     )

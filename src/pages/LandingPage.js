@@ -28,6 +28,7 @@ function Home(props){
             <div className='padding-top'>
                 <Button variant="contained" onClick={() => changePage("editor")}>Start Match</Button>
             </div>
+            <hr style={{width:"50%"}}/>
             <div className='padding-top'>
                 <Button variant="contained" onClick={() => changePage("data")}>Data Room</Button>
             </div>

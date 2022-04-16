@@ -2,6 +2,8 @@
 
 .App {
   font-family: 'Manrope', sans-serif;
+  min-width: fit-content;
+  max-width: 100%;
 }
 
 .App-header {
