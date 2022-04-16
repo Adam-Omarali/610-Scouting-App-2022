@@ -347,7 +347,7 @@ function DataRoom(props){
             setTeamAvg(team)
         }
         fetchData()
-    }, [teamNumber])
+    }, [teamNumber, teamNumber2, teamNumber3])
     
 
     return (
