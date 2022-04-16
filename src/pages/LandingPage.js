@@ -11,7 +11,7 @@ function Home(props){
     const changePage = (page) => {
         state.general.teamNumber = teamNumber
         state.general.match = matchNumber
-        if((teamNumber !== 0 && matchNumber !== 0) || page !== "data"){
+        if((teamNumber !== 0 && matchNumber !== 0) || page !== "editor"){
             props.setPage(page)
         }
     }
